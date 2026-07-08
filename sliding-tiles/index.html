@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Tiles | Lachsbach Arcade</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="game-shell">
+        <header class="game-header">
+            <a class="back-link" href="../index.html">Zurück</a>
+            <div class="title-block">
+                <p class="eyebrow">Slot 01</p>
+                <h1>Sliding Tiles</h1>
+            </div>
+            <div class="score-panel" aria-live="polite">
+                <span id="move-count">0</span>
+                <span>Züge</span>
+            </div>
+        </header>
+
+        <section class="play-layout">
+            <form class="control-panel" id="settings-form">
+                <label for="board-size">Spielfeld</label>
+                <div class="size-control">
+                    <button class="step-button" type="button" data-step="-1" aria-label="Spielfeld verkleinern">-</button>
+                    <input id="board-size" name="board-size" type="number" min="3" max="10" step="1" value="3" inputmode="numeric">
+                    <button class="step-button" type="button" data-step="1" aria-label="Spielfeld vergroessern">+</button>
+                </div>
+
+                <div class="button-row">
+                    <button class="primary-button" type="submit" id="reset-button">Reset</button>
+                    <button class="secondary-button" type="button" id="solve-button">Lösen</button>
+                    <button class="secondary-button" type="button" id="image-button">Anderes Bild</button>
+                </div>
+
+                <div class="stat-grid">
+                    <div>
+                        <span class="stat-label">Raster</span> 
+                        <strong id="grid-label">3 x 3</strong>
+                    </div>
+                    <div>
+                        <span class="stat-label">Status</span>
+                        <strong id="game-status">Bereit</strong>
+                    </div>
+                </div>
+
+                <section class="key-legend" aria-label="Tastenbelegung">
+                    <h2>Tasten</h2>
+                    <dl>
+                        <div>
+                            <dt><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd></dt>
+                            <dd>Feld wählen</dd>
+                        </div>
+                        <div>
+                            <dt><kbd>Enter</kbd><kbd>Space</kbd></dt>
+                            <dd>Verschieben</dd>
+                        </div>
+                        <div>
+                            <dt><kbd>+</kbd><kbd>P</kbd></dt>
+                            <dd>Mehr Felder</dd>
+                        </div>
+                        <div>
+                            <dt><kbd>-</kbd><kbd>M</kbd></dt>
+                            <dd>Weniger Felder</dd>
+                        </div>
+                        <div>
+                            <dt><kbd>H</kbd></dt>
+                            <dd>Hinweis (beta)</dd>
+                        </div>
+                        <div>
+                            <dt><kbd>L</kbd></dt>
+                            <dd>Lösen</dd>
+                        </div>
+                        <div>
+                            <dt><kbd>R</kbd></dt>
+                            <dd>Reset</dd>
+                        </div>
+                    </dl>
+                </section>
+            </form>
+
+            <section class="board-wrap" aria-label="Sliding-Tiles-Spielfeld">
+                <div class="board" id="puzzle-board" tabindex="0"></div>
+            </section>
+
+            <aside class="preview-panel">
+                <span class="preview-label">Motiv</span>
+                <img id="preview-image" src="../img/1.png" alt="Komplettes Puzzle-Motiv">
+            </aside>
+        </section>
+    </main>
+
+    <div class="modal-backdrop" id="confirm-modal" hidden>
+        <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-message">
+            <p class="modal-kicker" id="modal-kicker">Bestätigung</p>
+            <h2 id="modal-title">Aktion bestätigen</h2>
+            <p id="modal-message">Soll diese Aktion ausgeführt werden?</p>
+            <div class="modal-actions">
+                <button class="secondary-button" type="button" id="modal-cancel">Zurück</button>
+                <button class="primary-button" type="button" id="modal-confirm">Enter</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

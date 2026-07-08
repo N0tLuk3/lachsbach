@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freies Puzzle | Lachsbach Arcade</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="game-shell">
+        <header class="game-header">
+            <a class="back-link" href="../index.html">Zurück</a>
+            <div class="title-block">
+                <p class="eyebrow">Slot 02</p>
+                <h1>Freies Puzzle</h1>
+            </div>
+            <div class="group-counter" aria-live="polite">
+                <strong id="group-count">–</strong>
+                <span>Gruppen</span>
+            </div>
+        </header>
+
+        <section class="play-layout">
+            <form class="control-panel" id="settings-form">
+                <div class="field-heading">
+                    <label for="piece-count">Puzzleteile</label>
+                    <output id="piece-output" for="piece-count">25</output>
+                </div>
+                <input id="piece-count" name="piece-count" type="range" min="9" max="100" value="25" step="1">
+                <input id="piece-number" aria-label="Anzahl der Puzzleteile" type="number" min="9" max="100" value="25" step="1" inputmode="numeric">
+
+                <div class="preset-row" aria-label="Schnellauswahl">
+                    <button type="button" data-count="9">9</button>
+                    <button type="button" data-count="25">25</button>
+                    <button type="button" data-count="50">50</button>
+                    <button type="button" data-count="75">75</button>
+                    <button type="button" data-count="100">100</button>
+                </div>
+
+                <button class="primary-button" type="submit">Puzzle starten</button>
+                <button class="secondary-button" type="button" id="shuffle-button">Neu verteilen</button>
+                <button class="secondary-button" type="button" id="image-button">Anderes Motiv</button>
+
+                <div class="status-card">
+                    <span>Status</span>
+                    <strong id="game-status">Motiv wird geladen</strong>
+                </div>
+
+                <p class="instructions">Ziehe die Teile vom äußeren Ablagerand auf die mittige Puzzlefläche. Richtig verbundene Teile rasten ein und bewegen sich danach als Gruppe.</p>
+            </form>
+
+            <section class="puzzle-stage" aria-label="Puzzle-Ablage und Arbeitsfläche">
+                <div class="board-surface" aria-hidden="true"></div>
+                <canvas id="puzzle-canvas"></canvas>
+                <div class="loading-message" id="loading-message">Motiv wird geladen …</div>
+            </section>
+
+            <aside class="preview-panel">
+                <span>Motiv</span>
+                <img id="preview-image" src="../img/1.png" alt="Komplettes Puzzle-Motiv">
+                <p id="image-name">Motiv</p>
+            </aside>
+        </section>
+    </main>
+</body>
+</html>

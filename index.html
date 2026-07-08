@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lachsbach</title>
+    <title>Lachsbach Arcade</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <img src="leon.png" width="device-width">
+    <main class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <p class="eyebrow">Game Select</p>
+                <h1>Lachsbach</h1>
+            </div>
+            <div class="server-status" aria-label="Serverstatus">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>Server Online</span>
+            </div>
+        </header>
+
+        <section class="game-stage" aria-label="Seitenauswahl">
+            <aside class="selection-panel" aria-live="polite">
+                <p class="panel-label">Selected Slot</p>
+                <h2 id="selected-title">Laedt...</h2>
+                <p id="selected-description">Die Auswahl wird vorbereitet.</p>
+                <div class="panel-actions">
+                    <a class="launch-button" id="launch-link" href="#">Start</a>
+                    <span class="hint">Pfeiltasten + Enter</span>
+                </div>
+            </aside>
+
+            <div class="select-grid" id="tile-grid"></div>
+        </section>
+    </main>
 </body>
 </html>
